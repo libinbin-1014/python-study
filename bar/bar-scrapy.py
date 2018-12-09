@@ -205,6 +205,20 @@ class jpg_create(object):
 	    plt.show()
 	    plt.close()
 
+class WC(object):
+	def create(self, info):
+		dict_info = jieba.cut(info)
+		wc = WordCloud(
+			background_color="white",
+			max_words=1000,
+			mask=cloud_mask,
+			font_path="/usr/share/fonts/opentype/noto/ukai.ttc",
+			min_font_size=15,
+			max_font_size=70, 
+			width=400
+		)
+		wc.generate(",".join(dict_info))
+		wc.to_file("pic.png")
 
 if __name__ == '__main__': 
 
